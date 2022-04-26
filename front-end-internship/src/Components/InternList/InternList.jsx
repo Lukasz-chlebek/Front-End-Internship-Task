@@ -18,10 +18,10 @@ const InternList = () => {
 
     return (
         <div>
-            <Logo/>
+            <Logo style={{position:"relative", left:-500, marginTop: 20, marginBottom:16}}/>
             <Container>
                 <Title>Participants</Title>
-                <Wrapper>
+                <div style={{ marginBottom:80}}>
                     {
                         interns.map(u => (
                             u.id % 2 === 0?
@@ -29,7 +29,7 @@ const InternList = () => {
                                 <ParticipantTile id={u.id} name={u.name} key={u.id} color={"#F2F2F2"}/>
                         ))
                     }
-                </Wrapper>
+                </div>
 
             </Container>
         </div>
@@ -42,16 +42,11 @@ export default InternList;
 const Container = styled.div`
   background-color: #F7F7F7;
   width: 700px;
-  margin: auto;
-  padding:50px 0 80px 0;;
-`;
-
-const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  margin: 50px 0 80px 0;
+  margin: 0 auto 0 auto;
 `;
 
 const Title = styled.p`
@@ -61,5 +56,5 @@ const Title = styled.p`
   font-size: 40px;
   line-height: 47px;
   color: #222222;
-  
+  margin-bottom: 40px;
 `;

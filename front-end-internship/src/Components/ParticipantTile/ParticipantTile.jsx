@@ -6,12 +6,13 @@ const ParticipantTile = (props) =>{
     return(
         <Tile style={{backgroundColor:props.color}}>
             <p style={{padding:24}}>{props.name}</p>
-            <NavLink style={{textDecoration:"none", color:"black"}} to={`/interns/${props.id}`}>
-                <EditIconWrapper>
-                    <PenIcon style={{padding:8}}/>
-                    <p>Edit</p>
-                </EditIconWrapper>
-            </NavLink>
+                <NavLink style={{textDecoration:"none", color:"black"}} to={`/interns/${props.id}`}>
+                    <EditIconWrapper>
+                        <PenIcon style={{padding:8}}/>
+                        <p>Edit</p>
+                    </EditIconWrapper>
+                </NavLink>
+
         </Tile>
     )
 }
@@ -24,6 +25,10 @@ const Tile = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &:hover{
+    border: 2px solid black;
+  }
 `;
 
 const EditIconWrapper = styled.div`
