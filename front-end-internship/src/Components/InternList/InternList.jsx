@@ -18,7 +18,10 @@ const InternList = () => {
 
     return (
         <div>
-            <Logo style={{position:"relative", left:-500, marginTop: 20, marginBottom:16}}/>
+            <div style={{display:"flex", justifyContent:"center"}}>
+                <Logo style={{marginTop: 20, marginBottom:16}}/>
+            </div>
+
             <Container>
                 <Title>Participants</Title>
                 <div style={{ marginBottom:80}}>
