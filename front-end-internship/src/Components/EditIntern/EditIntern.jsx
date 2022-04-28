@@ -1,11 +1,13 @@
 import { useParams, useNavigate } from 'react-router';
-import { useQuery, useQueryClient} from "react-query";
+import { useQueryClient} from "react-query";
 import { NavLink } from 'react-router-dom';
 import {useState, useEffect} from "react";
 import Form from "../Form/Form";
 import styled from "styled-components";
-import {ReactComponent as Logo} from "../InternList/logo.svg";
-import {ReactComponent as Arrow} from "./arrow.svg";
+import {ReactComponent as Logo} from "../../Assets/logo.svg";
+import {ReactComponent as Arrow} from "../../Assets/arrow.svg";
+import ErrorScreen from "../ErrorScreen/ErrorScreen";
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
 
 const EditIntern = () => {
     const [interns, setInterns] = useState([]);
@@ -20,18 +22,23 @@ const EditIntern = () => {
         }).then(()=>{
             query.refetchQueries(`interns/${id}`)
             navigation('/')
-        }).catch(e=>{
-
+        }).catch(err=>{
+            return (
+                <ErrorScreen message={err}/>
+            )
         })
     }
     useEffect(() => {
-        const fetchInterns = async () => {
+        const fetchInternWithId = async () => {
             const response = await fetch(`http://localhost:3001/interns/${id}`);
             const interns = await response.json();
             setInterns(interns);
         }
-        fetchInterns();
+        fetchInternWithId();
     }, []);
+    if(!interns){
+        return <LoadingScreen/>
+    }
     return (
         <div>
             <Header>
@@ -45,7 +52,6 @@ const EditIntern = () => {
                 <Title>Edit</Title>
                 <Form data={interns} onSubmit={onSubmit}/>
             </Container>
-
         </div>
     );
 };

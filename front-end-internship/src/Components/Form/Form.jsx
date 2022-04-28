@@ -48,7 +48,7 @@ const Form = ({onSubmit, data})=>{
                 label={"Start Internship"}
                 type={"date"}
                 name={"start"}
-                value={data.internshipStart}
+                value={data.start}
                 error={errors.start}
                 register={register}
                 validation={{
@@ -64,7 +64,7 @@ const Form = ({onSubmit, data})=>{
                     error={errors.end}
                     register={register}
                     name={"end"}
-                    value={data.internshipEnd}
+                    value={data.end}
                     validation={{
                         required:{
                             value:true,
