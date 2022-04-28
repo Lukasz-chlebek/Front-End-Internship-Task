@@ -1,7 +1,8 @@
 import {useForm} from "react-hook-form";
 import styled from "styled-components";
+import React from "react";
 import FormInput from "../FormInput/FormInput";
-const Form = ({onSubmit})=>{
+const Form = ({onSubmit, data})=>{
     const {
         register,
         handleSubmit,
@@ -15,6 +16,7 @@ const Form = ({onSubmit})=>{
                 label={"Full Name"}
                 type={"text"}
                 name={"name"}
+                value={data.name}
                 error={errors.name}
                 register={register}
                 validation={{
@@ -27,6 +29,7 @@ const Form = ({onSubmit})=>{
                 label={"Email"}
                 type={"text"}
                 name={"email"}
+                value={data.email}
                 error={errors.email}
                 register={register}
                 validation={{
@@ -45,6 +48,7 @@ const Form = ({onSubmit})=>{
                 label={"Start Internship"}
                 type={"date"}
                 name={"start"}
+                value={data.internshipStart}
                 error={errors.start}
                 register={register}
                 validation={{
@@ -60,6 +64,7 @@ const Form = ({onSubmit})=>{
                     error={errors.end}
                     register={register}
                     name={"end"}
+                    value={data.internshipEnd}
                     validation={{
                         required:{
                             value:true,

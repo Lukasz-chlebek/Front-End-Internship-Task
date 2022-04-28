@@ -1,26 +1,37 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
+import { useQuery, useQueryClient} from "react-query";
 import { NavLink } from 'react-router-dom';
+import {useState, useEffect} from "react";
 import Form from "../Form/Form";
 import styled from "styled-components";
 import {ReactComponent as Logo} from "../InternList/logo.svg";
 import {ReactComponent as Arrow} from "./arrow.svg";
-import {useForm} from "react-hook-form";
 
 const EditIntern = () => {
+    const [interns, setInterns] = useState([]);
+    const query = useQueryClient();
     const { id } = useParams();
-    const {
-        register,
-        handleSubmit,
-        validation,
-        formState: { errors },
-    } = useForm();
-    const onSubmit = (data)=>{console.log(data)}
-    useEffect(() => {
-        //TODO: get intern from REST api http://localhost:3001/interns/:id
-        console.log(`I want to get intern with id: ${id}!`)
-    }, [id]);
+    const navigation = useNavigate()
+    const onSubmit = (data)=>{
+        fetch(`http://localhost:3001/interns/${id}`,{
+            method:"PUT",
+            headers:{'content-type': 'application/json'},
+            body: JSON.stringify(data)
+        }).then(()=>{
+            query.refetchQueries(`interns/${id}`)
+            navigation('/')
+        }).catch(e=>{
 
+        })
+    }
+    useEffect(() => {
+        const fetchInterns = async () => {
+            const response = await fetch(`http://localhost:3001/interns/${id}`);
+            const interns = await response.json();
+            setInterns(interns);
+        }
+        fetchInterns();
+    }, []);
     return (
         <div>
             <Header>
@@ -32,7 +43,7 @@ const EditIntern = () => {
             </Header>
             <Container>
                 <Title>Edit</Title>
-                <Form onSubmit={onSubmit}/>
+                <Form data={interns} onSubmit={onSubmit}/>
             </Container>
 
         </div>

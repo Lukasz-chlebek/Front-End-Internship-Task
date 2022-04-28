@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 
-const FormInput = ({error, type, label, validation, register, name}) =>{
+const FormInput = ({error, type, label, validation, register, name, value}) =>{
     return(
         <Wrapper>
             <label>{label}</label>
             <Input type={type}
                        name={name}
                        placeholder={label}
+                       defaultValue = {value}
                        {...register(name, {
                            required: validation.required,
                            pattern: validation.pattern,
