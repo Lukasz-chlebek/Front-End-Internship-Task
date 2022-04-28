@@ -1,6 +1,7 @@
 import styled from "styled-components";
-const ErrorScreen = ({message}) =>{
-    return(
+
+const ErrorScreen = ({message}) => {
+    return (
         <Container>
             <Title>Error during updating data</Title>
             <p>{message}</p>

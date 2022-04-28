@@ -1,45 +1,46 @@
 import {ReactComponent as Logo} from "../../Assets/logo.svg";
 import styled from "styled-components";
 import {keyframes} from "styled-components";
-const LoadingScreen=()=>{
-    return(
+
+const LoadingScreen = () => {
+    return (
         <Container>
             <LogoWrapper>
                 <Logo/>
             </LogoWrapper>
             <Loading>Loading</Loading>
         </Container>
-        )
+    )
 }
 export default LoadingScreen
 const bounce = keyframes`
   from {
     transform: translateY(0) scale(1);
   }
-  to   {
+  to {
     transform: translateY(200px) scale(1, 0.7);
   }
 `;
 
 const dots = keyframes`
   0%, 20% {
-    color: rgba(1,1,1,0);
-    text-shadow:
-            .25em 0 0 rgba(1,1,1,0),
-            .5em 0 0 rgba(1,1,1,0);}
+    color: rgba(1, 1, 1, 0);
+    text-shadow: .25em 0 0 rgba(1, 1, 1, 0),
+    .5em 0 0 rgba(1, 1, 1, 0);
+  }
   40% {
     color: black;
-    text-shadow:
-            .25em 0 0 rgba(1,1,1,0),
-            .5em 0 0 rgba(1,1,1,0);}
+    text-shadow: .25em 0 0 rgba(1, 1, 1, 0),
+    .5em 0 0 rgba(1, 1, 1, 0);
+  }
   60% {
-    text-shadow:
-            .25em 0 0 black,
-            .5em 0 0 rgba(1,1,1,0);}
+    text-shadow: .25em 0 0 black,
+    .5em 0 0 rgba(1, 1, 1, 0);
+  }
   80%, 100% {
-    text-shadow:
-            .25em 0 0 black,
-            .5em 0 0 black;}
+    text-shadow: .25em 0 0 black,
+    .5em 0 0 black;
+  }
 `;
 
 const Loading = styled.p`
@@ -48,9 +49,10 @@ const Loading = styled.p`
   position: absolute;
   top: 300px;
   left: calc(50% - 90px);
-  &:after{
+
+  &:after {
     content: ' .';
-    animation: ${dots} 2s steps(5, end)  infinite;
+    animation: ${dots} 2s steps(5, end) infinite;
   }
 `;
 

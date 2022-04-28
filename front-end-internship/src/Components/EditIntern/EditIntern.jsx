@@ -1,6 +1,6 @@
-import { useParams, useNavigate } from 'react-router';
-import { useQueryClient} from "react-query";
-import { NavLink } from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router';
+import {useQueryClient} from "react-query";
+import {NavLink} from 'react-router-dom';
 import {useState, useEffect} from "react";
 import Form from "../Form/Form";
 import styled from "styled-components";
@@ -12,17 +12,17 @@ import LoadingScreen from "../LoadingScreen/LoadingScreen";
 const EditIntern = () => {
     const [interns, setInterns] = useState([]);
     const query = useQueryClient();
-    const { id } = useParams();
+    const {id} = useParams();
     const navigation = useNavigate()
-    const onSubmit = (data)=>{
-        fetch(`http://localhost:3001/interns/${id}`,{
-            method:"PUT",
-            headers:{'content-type': 'application/json'},
+    const onSubmit = (data) => {
+        fetch(`http://localhost:3001/interns/${id}`, {
+            method: "PUT",
+            headers: {'content-type': 'application/json'},
             body: JSON.stringify(data)
-        }).then(()=>{
+        }).then(() => {
             query.refetchQueries(`interns/${id}`)
             navigation('/')
-        }).catch(err=>{
+        }).catch(err => {
             return (
                 <ErrorScreen message={err}/>
             )
@@ -36,16 +36,16 @@ const EditIntern = () => {
         }
         fetchInternWithId();
     }, []);
-    if(!interns){
+    if (!interns) {
         return <LoadingScreen/>
     }
     return (
         <div>
             <Header>
-                <Logo style={{ marginTop: 20, marginBottom:16, marginLeft:20}}/>
-                <NavLink style={{marginLeft:180, display:"flex",textDecoration:"none", color:"black"}} to="/">
-                    <Arrow width={24} />
-                    <p style={{marginLeft:12}}>Back to list</p>
+                <Logo style={{marginTop: 20, marginBottom: 16, marginLeft: 20}}/>
+                <NavLink style={{marginLeft: 180, display: "flex", textDecoration: "none", color: "black"}} to="/">
+                    <Arrow width={24}/>
+                    <p style={{marginLeft: 12}}>Back to list</p>
                 </NavLink>
             </Header>
             <Container>
@@ -78,7 +78,7 @@ const Title = styled.p`
   margin-bottom: 40px;
 `;
 
-const Header =styled.div`
+const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

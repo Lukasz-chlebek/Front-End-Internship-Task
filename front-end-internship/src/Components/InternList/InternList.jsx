@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import ParticipantTile from "../ParticipantTile/ParticipantTile";
 import {ReactComponent as Logo} from "../../Assets/logo.svg";
@@ -15,21 +15,21 @@ const InternList = () => {
         }
         fetchInterns();
     }, []);
-    if(!interns){
+    if (!interns) {
         return <LoadingScreen/>
     }
     return (
         <div>
             <Header>
-                <Logo style={{marginTop: 20, marginBottom:16}}/>
+                <Logo style={{marginTop: 20, marginBottom: 16}}/>
             </Header>
             <Container>
                 <Title>Participants</Title>
-                <div style={{ marginBottom:80}}>
+                <div style={{marginBottom: 80}}>
                     {
                         interns.map(u => (
-                            u.id % 2 === 0?
-                                <ParticipantTile id={u.id} name={u.name} key={u.id}/>:
+                            u.id % 2 === 0 ?
+                                <ParticipantTile id={u.id} name={u.name} key={u.id}/> :
                                 <ParticipantTile id={u.id} name={u.name} key={u.id} color={"#F2F2F2"}/>
                         ))
                     }
@@ -62,6 +62,6 @@ const Title = styled.p`
 `;
 
 const Header = styled.header`
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 `;

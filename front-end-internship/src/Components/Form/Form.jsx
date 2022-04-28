@@ -2,15 +2,16 @@ import {useForm} from "react-hook-form";
 import styled from "styled-components";
 import React from "react";
 import FormInput from "../FormInput/FormInput";
-const Form = ({onSubmit, data})=>{
+
+const Form = ({onSubmit, data}) => {
     const {
         register,
         handleSubmit,
         watch,
-        formState: { errors },
+        formState: {errors},
     } = useForm();
     const watchStartInternship = watch('start')
-    return(
+    return (
         <FormWrapper onSubmit={handleSubmit(onSubmit)}>
             <FormInput
                 label={"Full Name"}
@@ -33,30 +34,30 @@ const Form = ({onSubmit, data})=>{
                 error={errors.email}
                 register={register}
                 validation={{
-                    required:{
+                    required: {
                         value: true,
                         message: "Email is required",
                     },
-                    pattern:{
-                        value:/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
-                        message:"Email is incorrect",
+                    pattern: {
+                        value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
+                        message: "Email is incorrect",
                     }
                 }}
             />
             <DateWrapper>
                 <FormInput
-                label={"Start Internship"}
-                type={"date"}
-                name={"start"}
-                value={data.start}
-                error={errors.start}
-                register={register}
-                validation={{
-                    required:{
-                        value:true,
-                        message:"Date is required",
-                    }
-                }}
+                    label={"Start Internship"}
+                    type={"date"}
+                    name={"start"}
+                    value={data.start}
+                    error={errors.start}
+                    register={register}
+                    validation={{
+                        required: {
+                            value: true,
+                            message: "Date is required",
+                        }
+                    }}
                 />
                 <FormInput
                     label={"End Internship"}
@@ -66,17 +67,17 @@ const Form = ({onSubmit, data})=>{
                     name={"end"}
                     value={data.end}
                     validation={{
-                        required:{
-                            value:true,
-                            message:"Date is required",
+                        required: {
+                            value: true,
+                            message: "Date is required",
                         },
-                        min:{
-                            value:watchStartInternship,
-                            message:"End should be after internship start"
+                        min: {
+                            value: watchStartInternship,
+                            message: "End should be after internship start"
                         }
                     }}/>
             </DateWrapper>
-            <Button type="submit" value="Submit" />
+            <Button type="submit" value="Submit"/>
         </FormWrapper>
     )
 }

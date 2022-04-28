@@ -2,16 +2,16 @@ import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import {ReactComponent as PenIcon} from '../../Assets/pen-icon.svg';
 
-const ParticipantTile = ({id, name,color}) =>{
-    return(
-        <Tile style={{backgroundColor:color}}>
-            <p style={{padding:24}}>{name}</p>
-                <NavLink style={{textDecoration:"none", color:"black"}} to={`/interns/${id}`}>
-                    <EditIconWrapper>
-                        <PenIcon style={{padding:8}}/>
-                        <p>Edit</p>
-                    </EditIconWrapper>
-                </NavLink>
+const ParticipantTile = ({id, name, color}) => {
+    return (
+        <Tile style={{backgroundColor: color}}>
+            <p style={{padding: 24}}>{name}</p>
+            <NavLink style={{textDecoration: "none", color: "black"}} to={`/interns/${id}`}>
+                <EditIconWrapper>
+                    <PenIcon style={{padding: 8}}/>
+                    <p>Edit</p>
+                </EditIconWrapper>
+            </NavLink>
 
         </Tile>
     )
@@ -26,7 +26,7 @@ const Tile = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  &:hover{
+  &:hover {
     border: 2px solid black;
   }
 `;
