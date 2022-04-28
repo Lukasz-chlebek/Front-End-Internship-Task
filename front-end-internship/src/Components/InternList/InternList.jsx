@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import ParticipantTile from "../ParticipantTile/ParticipantTile";
 import {ReactComponent as Logo} from "../../Assets/logo.svg";
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
 
 const InternList = () => {
 
@@ -14,6 +15,9 @@ const InternList = () => {
         }
         fetchInterns();
     }, []);
+    if(!interns){
+        return <LoadingScreen/>
+    }
     return (
         <div>
             <Header>
