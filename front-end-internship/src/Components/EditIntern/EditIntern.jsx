@@ -5,9 +5,16 @@ import Form from "../Form/Form";
 import styled from "styled-components";
 import {ReactComponent as Logo} from "../InternList/logo.svg";
 import {ReactComponent as Arrow} from "./arrow.svg";
+import {useForm} from "react-hook-form";
 
 const EditIntern = () => {
     const { id } = useParams();
+    const {
+        register,
+        handleSubmit,
+        validation,
+        formState: { errors },
+    } = useForm();
     const onSubmit = (data)=>{console.log(data)}
     useEffect(() => {
         //TODO: get intern from REST api http://localhost:3001/interns/:id

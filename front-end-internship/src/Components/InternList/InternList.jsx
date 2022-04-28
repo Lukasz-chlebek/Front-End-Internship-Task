@@ -33,7 +33,6 @@ const InternList = () => {
                         ))
                     }
                 </div>
-
             </Container>
         </div>
 

@@ -2,11 +2,11 @@ import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import {ReactComponent as PenIcon} from './pen-icon.svg';
 
-const ParticipantTile = (props) =>{
+const ParticipantTile = ({id, name,color}) =>{
     return(
-        <Tile style={{backgroundColor:props.color}}>
-            <p style={{padding:24}}>{props.name}</p>
-                <NavLink style={{textDecoration:"none", color:"black"}} to={`/interns/${props.id}`}>
+        <Tile style={{backgroundColor:color}}>
+            <p style={{padding:24}}>{name}</p>
+                <NavLink style={{textDecoration:"none", color:"black"}} to={`/interns/${id}`}>
                     <EditIconWrapper>
                         <PenIcon style={{padding:8}}/>
                         <p>Edit</p>
