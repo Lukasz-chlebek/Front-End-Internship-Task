@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 import styled from "styled-components";
-import {ReactComponent as PenIcon} from './pen-icon.svg';
+import {ReactComponent as PenIcon} from '../../Assets/pen-icon.svg';
 
 const ParticipantTile = ({id, name,color}) =>{
     return(

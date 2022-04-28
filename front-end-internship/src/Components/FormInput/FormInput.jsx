@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {ReactComponent as Arrow} from "./erorr-icon.svg";
+import {ReactComponent as Arrow} from "../../Assets/error-icon.svg";
 import "./FormInput.css"
 
 const FormInput = ({error, type, label, validation, register, name, value}) =>{

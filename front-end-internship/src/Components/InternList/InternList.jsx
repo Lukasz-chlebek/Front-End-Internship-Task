@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import ParticipantTile from "../ParticipantTile/ParticipantTile";
-import {ReactComponent as Logo} from "./logo.svg";
+import {ReactComponent as Logo} from "../../Assets/logo.svg";
 
 const InternList = () => {
 
     const [interns, setInterns] = useState([]);
-
     useEffect(() => {
         const fetchInterns = async () => {
             const response = await fetch('http://localhost:3001/interns');
@@ -15,13 +14,11 @@ const InternList = () => {
         }
         fetchInterns();
     }, []);
-
     return (
         <div>
-            <div style={{display:"flex", justifyContent:"center"}}>
+            <Header>
                 <Logo style={{marginTop: 20, marginBottom:16}}/>
-            </div>
-
+            </Header>
             <Container>
                 <Title>Participants</Title>
                 <div style={{ marginBottom:80}}>
@@ -35,7 +32,6 @@ const InternList = () => {
                 </div>
             </Container>
         </div>
-
     );
 };
 
@@ -59,4 +55,9 @@ const Title = styled.p`
   line-height: 47px;
   color: #222222;
   margin-bottom: 40px;
+`;
+
+const Header = styled.header`
+  display:flex;
+  justify-content:center;
 `;
