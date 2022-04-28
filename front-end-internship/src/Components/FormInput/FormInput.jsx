@@ -1,9 +1,17 @@
 import styled from "styled-components";
-
+import {ReactComponent as Arrow} from "./erorr-icon.svg";
+import "./FormInput.css"
 
 const FormInput = ({error, type, label, validation, register, name, value}) =>{
     return(
         <Wrapper>
+            {error &&  <Arrow width={24} style={{
+                position: "relative",
+                left:type==="date"? "170px": "460px",
+                top: 57,
+                fill:"red"
+            }}/>
+            }
             <label>{label}</label>
             <Input type={type}
                        name={name}
@@ -16,7 +24,7 @@ const FormInput = ({error, type, label, validation, register, name, value}) =>{
                        })}
                        style={{
                            border:error? '1px solid red' : '1px solid black',
-                           width: type==="date"? '238px' :'494px'
+                           width: type==="date"? '238px' :'494px',
                        }}
             />
             {error && <Alert>{error.message}</Alert>}

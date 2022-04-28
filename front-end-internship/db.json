@@ -1,11 +1,11 @@
 {
   "interns": [
     {
-      "id": 1,
       "name": "Bird Ramsey",
       "email": "birdramsey@nimon.com",
-      "internshipStart": "2021-07-01T00:00+00Z",
-      "internshipEnd": "2021-09-30T00:00+00Z"
+      "start": "2022-04-06",
+      "end": "2022-04-07",
+      "id": 1
     },
     {
       "name": "Lillian Burgess",

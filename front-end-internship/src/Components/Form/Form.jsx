@@ -99,6 +99,6 @@ const Button = styled.input`
   height: 48px;
   background-color: #222222;
   color: #FFFFFF;
-  margin: 0 0 30px 0;
+  margin: 30px 0 30px 0;
 `;
 
