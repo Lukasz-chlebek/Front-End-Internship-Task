@@ -1,7 +1,8 @@
 import {useForm} from "react-hook-form";
-import styled from "styled-components";
 import React from "react";
 import FormInput from "../FormInput/FormInput";
+import styles from "./Form.module.css"
+
 
 const Form = ({onSubmit, data}) => {
     const {
@@ -12,7 +13,7 @@ const Form = ({onSubmit, data}) => {
     } = useForm();
     const watchStartInternship = watch('start')
     return (
-        <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+        <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
             <FormInput
                 label={"Full Name"}
                 type={"text"}
@@ -39,12 +40,12 @@ const Form = ({onSubmit, data}) => {
                         message: "Email is required",
                     },
                     pattern: {
-                        value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
+                        value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/i,
                         message: "Email is incorrect",
                     }
                 }}
             />
-            <DateWrapper>
+            <div className={styles.formContainer__DateWrapper}>
                 <FormInput
                     label={"Start Internship"}
                     type={"date"}
@@ -76,30 +77,11 @@ const Form = ({onSubmit, data}) => {
                             message: "End should be after internship start"
                         }
                     }}/>
-            </DateWrapper>
-            <Button type="submit" value="Submit"/>
-        </FormWrapper>
+            </div>
+            <button className={styles.formContainer__button} type="submit">Submit</button>
+        </form>
     )
 }
 
 export default Form
-
-const FormWrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-`;
-
-const DateWrapper = styled.div`
-  display: flex;
-`;
-
-const Button = styled.input`
-  width: 224px;
-  height: 48px;
-  background-color: #222222;
-  color: #FFFFFF;
-  margin: 30px 0 30px 0;
-`;
 

@@ -1,22 +1,11 @@
-import styled from "styled-components";
+import styles from "./ErrorScreen.module.css"
 
 const ErrorScreen = ({message}) => {
     return (
-        <Container>
-            <Title>Error during updating data</Title>
+        <section className={styles.container}>
+            <h1 className={styles.container__title}>Error during updating data</h1>
             <p>{message}</p>
-        </Container>
+        </section>
     )
 }
 export default ErrorScreen
-
-const Container = styled.div`
-  margin: auto;
-  width: 50%;
-  padding: 50px;
-`;
-
-const Title = styled.p`
-  font-size: 30px;
-  font-weight: bold;
-`;

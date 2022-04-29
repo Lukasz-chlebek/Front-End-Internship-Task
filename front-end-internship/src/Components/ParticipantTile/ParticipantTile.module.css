@@ -1,0 +1,32 @@
+.container{
+    background-color: #EDEDED;
+    width: 500px;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container:hover{
+    border: 2px solid black;
+}
+
+.container__name{
+    padding: 24px;
+}
+
+.container__navLink{
+    color:black;
+    text-decoration: none;
+}
+
+.editWrapper{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.editWrapper__icon{
+    padding: 8px;
+}

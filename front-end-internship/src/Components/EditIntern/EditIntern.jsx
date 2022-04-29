@@ -1,17 +1,15 @@
 import {useParams, useNavigate} from 'react-router';
-import {useQueryClient} from "react-query";
 import {NavLink} from 'react-router-dom';
 import {useState, useEffect} from "react";
 import Form from "../Form/Form";
-import styled from "styled-components";
 import {ReactComponent as Logo} from "../../Assets/logo.svg";
 import {ReactComponent as Arrow} from "../../Assets/arrow.svg";
 import ErrorScreen from "../ErrorScreen/ErrorScreen";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import styles from "./EditIntern.module.css"
 
 const EditIntern = () => {
     const [interns, setInterns] = useState([]);
-    const query = useQueryClient();
     const {id} = useParams();
     const navigation = useNavigate()
     const onSubmit = (data) => {
@@ -20,7 +18,6 @@ const EditIntern = () => {
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(data)
         }).then(() => {
-            query.refetchQueries(`interns/${id}`)
             navigation('/')
         }).catch(err => {
             return (
@@ -37,49 +34,23 @@ const EditIntern = () => {
         fetchInternWithId();
     }, []);
     if (!interns) {
-        return <LoadingScreen/>
+        return <LoadingScreen aria-hidden="true"/>
     }
     return (
         <div>
-            <Header>
-                <Logo style={{marginTop: 20, marginBottom: 16, marginLeft: 20}}/>
-                <NavLink style={{marginLeft: 180, display: "flex", textDecoration: "none", color: "black"}} to="/">
-                    <Arrow width={24}/>
-                    <p style={{marginLeft: 12}}>Back to list</p>
+            <nav className={styles.header}>
+                <Logo className={styles.header__logo} />
+                <NavLink className={styles.navLink} to="/">
+                    <Arrow className={styles.navLink__icon} aria-label={"arrow-icon"}/>
+                    <p className={styles.navLink__text}>Back to list</p>
                 </NavLink>
-            </Header>
-            <Container>
-                <Title>Edit</Title>
+            </nav>
+            <main className={styles.container}>
+                <h1 className={styles.container__title}>Edit</h1>
                 <Form data={interns} onSubmit={onSubmit}/>
-            </Container>
+            </main>
         </div>
     );
 };
 
 export default EditIntern;
-
-const Container = styled.div`
-  max-width: 700px;
-  background-color: #F7F7F7;
-  margin: 0 auto 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-`;
-
-const Title = styled.p`
-  text-align: left;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 47px;
-  color: #222222;
-  margin-bottom: 40px;
-`;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
