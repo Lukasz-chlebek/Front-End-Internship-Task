@@ -8,8 +8,7 @@
         "react-hook-form": "^7.30.0",
         "react-query": "^3.38.0",
         "react-router-dom": "^6.3.0",
-        "react-scripts": "5.0.1",
-        "styled-components": "^5.3.5"
+        "react-scripts": "5.0.1"
     },
     "scripts": {
         "start": "concurrently \"react-scripts start\" \"json-server --watch db.json --port 3001\"",

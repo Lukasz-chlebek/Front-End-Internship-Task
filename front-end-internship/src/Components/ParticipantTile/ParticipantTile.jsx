@@ -7,7 +7,7 @@ const ParticipantTile = ({id, name, color}) => {
             <p className={styles.container__name}> {name}</p>
             <NavLink className={styles.container__navLink} to={`/interns/${id}`}>
                 <div className={styles.editWrapper}>
-                    <PenIcon className={styles.editWrapper__icon}/>
+                    <PenIcon className={styles.editWrapper__icon} aria-label={"pen-icon"}/>
                     <p>Edit</p>
                 </div>
             </NavLink>

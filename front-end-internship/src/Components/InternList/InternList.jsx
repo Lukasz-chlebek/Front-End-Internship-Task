@@ -22,7 +22,7 @@ const InternList = () => {
     return (
         <section>
             <nav className={styles.header}>
-                <Logo className={styles.header__logo}/>
+                <Logo className={styles.header__logo} aria-label={"logo"}/>
             </nav>
             <main className={styles.container}>
                 <h1 className={styles.container__title}>Participants</h1>
